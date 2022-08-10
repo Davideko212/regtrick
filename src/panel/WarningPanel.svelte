@@ -8,7 +8,7 @@
     let yes = false;
 </script>
 
-<div id="main">
+<main>
     <div id="content">
         <h1>WARNING</h1>
         
@@ -26,10 +26,10 @@
             Go to the Main panel
         </button>
     </div>
-</div>
+</main>
 
 <style>
-    #main {
+    main {
         display: flex;
         height: 100%;
     }

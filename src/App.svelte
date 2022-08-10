@@ -6,7 +6,8 @@
 
 	let activePanelValue;
 
-	activePanel.set(ActivePanel.Warning);
+	//temp
+	activePanel.set(ActivePanel.Main);
 
 	activePanel.subscribe(value => {
 		activePanelValue = value;
