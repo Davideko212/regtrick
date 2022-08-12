@@ -1,7 +1,11 @@
 <script>
     import Icon from '../components/Icon.svelte';
 
-    let on = false;
+    export let enabled = false;
+    export let title = "";
+    export let active = "";
+    export let description = "";
+
     let extended = false;
 
     function toggle_extend() {
@@ -22,12 +26,20 @@
                         {/if}
                     </div>
                 </div>
-                <h1>Systemclock show seconds</h1>
+                <h1>{title}</h1>
             </div>
             {#if extended}
                 <div id="entry">
-                    <input type="checkbox" id="switch" bind:checked={on}>
-                    <p>System clock goes brrrrr</p>
+                    <div id="important">
+                        <div id="enable">
+                            <h2>Enable:</h2>
+                            <input type="checkbox" id="switch" bind:checked={enabled}>
+                        </div>
+                        <div id="active">
+                            <h2>Active: {active}</h2>
+                        </div>
+                    </div>
+                    <p>{description}</p>
                 </div>
             {/if}
         </div>
@@ -38,34 +50,58 @@
     * {
         margin: 0;
         padding: 0;
+        border: 0;
     }
     
     #content {
         display: flex;
         flex-direction: row;
         border: 5px;
-        padding-left: 10%;
-        padding-right: 10%;
     }
 
     #entry {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
+        margin-left: 26px;
+        gap: 10px;
+        border-top: 2px;
+        border-style: solid;
+        border-color: lightgrey;
+        padding-top: 10px;
     }
 
-    h1 {
-        margin: 0;
+    #enable {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+    }
+
+    #switch {
+        width: 20px;
+        height: 20px;
+        align-self: center;
+    }
+
+    #important {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
     }
 
     #title {
-        margin-top: 3%;
-        margin-bottom: 3%;
+        margin-top: 2vh;
+        margin-bottom: 5px;
         display: flex;
         flex-direction: row;
         gap: 8px;
     }
 
     #arrow {
-        margin-top: 4%;
+        align-self: center;
+        margin-top: 10px;
+    }
+
+    h1 {
+        margin: 0;
     }
 </style>

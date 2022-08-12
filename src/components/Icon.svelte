@@ -5,7 +5,7 @@
     export let width;
     export let height;
 
-    let path = "../" + Icons[name].path;
+    let path = Icons[name].path;
     let alt = Icons[name].alt;
 
     if (width === undefined) {
@@ -17,12 +17,13 @@
 </script>
 
 <main>
-    <img src="{path}" alt="{alt}" width="{width}" height="{height}">
+    <img src="{"assets/icons/" + path}" alt="{alt}" width="{width}" height="{height}">
 </main>
 
 <style>
     * {
         margin: 0;
         padding: 0;
+        border: 0;
     }
 </style>

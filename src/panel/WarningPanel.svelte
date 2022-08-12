@@ -29,6 +29,12 @@
 </main>
 
 <style>
+    * {
+        margin: 0;
+        padding: 0;
+		border: 0;
+    }
+
     main {
         display: flex;
         height: 100%;
