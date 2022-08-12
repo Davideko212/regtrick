@@ -19,5 +19,23 @@ export const Icons = {
         alt: "Chevron arrow pointing down",
         width: 16,
         height: 16
+    },
+    Cog: {
+        path: "assets/icons/cog.svg",
+        alt: "Cog/Gear Icon",
+        width: 32,
+        height: 32
+    },
+    X: {
+        path: "assets/icons/x.svg",
+        alt: "X Icon",
+        width: 32,
+        height: 32
+    },
+    Info: {
+        path: "assets/icons/info.svg",
+        alt: "Information Icon",
+        width: 32,
+        height: 32
     }
 }

@@ -2,11 +2,18 @@
     import { Icons } from '../stores.js';
 
     export let name;
+    export let width;
+    export let height;
 
     let path = "../" + Icons[name].path;
     let alt = Icons[name].alt;
-    let width = Icons[name].width;
-    let height = Icons[name].height;
+
+    if (width === undefined) {
+        width = Icons[name].width;
+    }
+    if (height === undefined) {
+        height = Icons[name].height;
+    }
 </script>
 
 <main>
@@ -14,5 +21,8 @@
 </main>
 
 <style>
-
+    * {
+        margin: 0;
+        padding: 0;
+    }
 </style>

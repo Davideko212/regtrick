@@ -35,6 +35,11 @@
 </main>
 
 <style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    
     #content {
         display: flex;
         flex-direction: row;
