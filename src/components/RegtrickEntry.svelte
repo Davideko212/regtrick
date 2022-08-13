@@ -80,6 +80,7 @@
         width: 20px;
         height: 20px;
         align-self: center;
+        cursor: pointer;
     }
 
     #important {
@@ -99,6 +100,10 @@
     #arrow {
         align-self: center;
         margin-top: 10px;
+    }
+
+    #arrow-container {
+        cursor: pointer;
     }
 
     h1 {

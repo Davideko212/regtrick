@@ -1,5 +1,6 @@
 <script>
     import { explorerWidth } from '../stores.js';
+import Icon from './Icon.svelte';
 
     let width = 300;
 
@@ -23,7 +24,12 @@
 
 <main>
     <div id="content" style="--width: {width}px">
-        
+        <div id="top">
+            <input type="text" id="searchbar" style="--width: {width-10}px">
+            <div id="expand-container">
+                <Icon name={"X"}/>
+            </div>
+        </div>
     </div>
     <div id="drag" on:mousedown={onMouseDown} style="--width: {width-12}px">
         
@@ -57,5 +63,26 @@
         cursor: e-resize;
 
         /*background-color: yellow;*/
+    }
+
+    #top {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 8px;
+        padding-left: 16px;
+        gap: 20px;
+
+        background-color: aqua;
+    }
+
+    #searchbar {
+        width: var(--width);
+    }
+
+    #expand-container {
+        align-self: flex-end;
+
+        background-color: blueviolet;
     }
 </style>
