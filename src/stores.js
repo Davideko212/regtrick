@@ -39,5 +39,17 @@ export const Icons = {
         alt: "Information Icon",
         width: 32,
         height: 32
-    }
+    },
+    Plus: {
+        path: "plus.svg",
+        alt: "Plus Icon",
+        width: 32,
+        height: 32
+    },
+    Minus: {
+        path: "minus.svg",
+        alt: "Minus Icon",
+        width: 32,
+        height: 32
+    },
 }

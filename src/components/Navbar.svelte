@@ -42,17 +42,20 @@
        background-color: red;
        padding: 10px;
        border-radius: 50%;
+       cursor: pointer;
     }
 
     #cog-container{
        background-color: red;
        padding: 10px;
        border-radius: 50%;
+       cursor: pointer;
     }
 
     #info-container{
        background-color: red;
        padding: 10px;
        border-radius: 50%;
+       cursor: pointer;
     } 
 </style>

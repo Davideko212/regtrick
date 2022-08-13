@@ -46,6 +46,7 @@
         align-items: center;
         width: 50%;
         margin: auto;
+        gap: 20px;
     }
 
     #check-container {

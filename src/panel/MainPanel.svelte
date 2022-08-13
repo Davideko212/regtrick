@@ -9,7 +9,6 @@
 
 	explorerWidth.subscribe(value => {
 		width = value;
-		console.log(width);
 	})
 </script>
 
