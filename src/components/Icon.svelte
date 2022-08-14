@@ -1,5 +1,5 @@
 <script>
-    import { Icons } from '../stores.js';
+    import Icons from "../../public/assets/icons/icons.json";
 
     export let name;
     export let width;
@@ -16,7 +16,7 @@
     }
 </script>
 
-<main>
+<main style="--height: {height}px; --width: {width}px">
     <img src="{"assets/icons/" + path}" alt="{alt}" width="{width}" height="{height}">
 </main>
 
@@ -25,5 +25,10 @@
         margin: 0;
         padding: 0;
         border: 0;
+    }
+
+    main {
+        height: var(--height);
+        width: var(--width)
     }
 </style>

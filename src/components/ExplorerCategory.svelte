@@ -3,7 +3,6 @@
     import Icon from './Icon.svelte';
     import Entries from "../../public/assets/entries.json";
 
-    export let enabled = false;
     export let title = "";
 
     let width = 300;
@@ -29,9 +28,6 @@
         </div>
         <div id="title">
             <h1>{title}</h1>
-        </div>
-        <div id="enable">
-            <input type="checkbox" id="switch" bind:checked={enabled}>
         </div>
     </div>
 </main>

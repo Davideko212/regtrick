@@ -4,7 +4,7 @@
 
 <main>
     <div id="x-container">
-        <Icon name={"X"} id="icon"/>
+        <Icon name={"Logo_greyscale"} id="icon"/>
     </div>
     <div id="cog-container">
         <Icon name={"Cog"} id="icon"/>

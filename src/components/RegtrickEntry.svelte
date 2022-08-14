@@ -1,5 +1,6 @@
 <script>
     import Icon from '../components/Icon.svelte';
+    import Entries from "../../public/assets/entries.json";
 
     export let enabled = false;
     export let title = "";
