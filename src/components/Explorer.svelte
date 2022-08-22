@@ -2,7 +2,7 @@
     import { explorerWidth } from '../stores.js';
     import Icon from './Icon.svelte';
     import Entries from "../../public/assets/entries.json";
-    import ExplorerEntry from './ExplorerEntry.svelte';
+    import ExplorerCategory from './ExplorerCategory.svelte';
 
     let width = 300;
     let oldWidth = 0;
@@ -56,15 +56,13 @@
         </div>
         {#if extended}
         <div id="entries">
-            {#each Entries as entry}
-			    <ExplorerEntry enabled="{entry.enabled}" title="{entry.title}"/>
-		    {/each}
+            {#each Entries as category}
+                <ExplorerCategory title={category.name} values={category.entries}/>
+            {/each}
         </div>
         {/if}
     </div>
-    <div id="drag" on:mousedown={onMouseDown} style="--width: {width-12}px">
-        
-    </div>
+    <div id="drag" on:mousedown={onMouseDown} style="--width: {width-12}px"/>
 </main>
 
 <style>
@@ -77,7 +75,7 @@
     #content {
         display: flex;
         flex-direction: column;
-        position: absolute;
+        position: fixed;
         top: 0%;
         left: 0%;
         height: 100%;
@@ -112,6 +110,7 @@
 
     #expand-container {
         padding: 5px;
+        aspect-ratio: 1/1;
         cursor: pointer;
 
         background-color: blueviolet;

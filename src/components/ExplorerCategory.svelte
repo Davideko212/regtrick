@@ -1,9 +1,11 @@
 <script>
     import { explorerWidth } from '../stores.js';
     import Icon from './Icon.svelte';
-    import Entries from "../../public/assets/entries.json";
+    import ExplorerEntry from './ExplorerEntry.svelte';
+    import RegtrickEntry from './RegtrickEntry.svelte';
 
     export let title = "";
+    export let values;
 
     let width = 300;
     let extended = false;
@@ -30,6 +32,13 @@
             <h1>{title}</h1>
         </div>
     </div>
+    <div id="entries" style="--width: {width}px">
+        {#if extended}
+            {#each values as entry}
+                <ExplorerEntry title={entry.title} enabled={entry.enabled}/>
+            {/each}
+        {/if}
+    </div>
 </main>
 
 <style>
@@ -52,15 +61,11 @@
     }
 
     #expand-container {
-        background-color: blue;
         aspect-ratio: 1/1;
         margin: 3px;
-    }
+        cursor: pointer;
 
-    #switch {
-        aspect-ratio: 1/1;
-        width: 14px;
-        margin-left: 5px;
+        background-color: blue;
     }
 
     h1 {

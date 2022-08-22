@@ -17,9 +17,11 @@
 	<Explorer/>
 
 	<div id="content" style="--explorer-padding: {width+30}px">
-		{#each Entries as entry}
-			<RegtrickEntry {...entry}/>
-		{/each}
+		{#each Entries as category}
+			{#each category.entries as entry}
+				<RegtrickEntry {...entry}/>
+			{/each}
+        {/each}
 	</div>
 </main>
 

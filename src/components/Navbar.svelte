@@ -1,9 +1,18 @@
 <script>
     import Icon from '../components/Icon.svelte';
+
+    // TESTING HOW TAURI WORKS
+    import { invoke } from "@tauri-apps/api";
+
+    async function bruh() {
+        console.log("clicked");
+        
+        await invoke("test2");
+    }
 </script>
 
 <main>
-    <div id="x-container">
+    <div id="logo-container" on:click={bruh}>
         <Icon name={"Logo_greyscale"} id="icon"/>
     </div>
     <div id="cog-container">
@@ -38,7 +47,7 @@
         border-radius: 15px;
     }
 
-    #x-container{
+    #logo-container{
        background-color: red;
        padding: 10px;
        border-radius: 50%;
