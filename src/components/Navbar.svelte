@@ -1,18 +1,9 @@
 <script>
     import Icon from '../components/Icon.svelte';
-
-    // TESTING HOW TAURI WORKS
-    import { invoke } from "@tauri-apps/api";
-
-    async function bruh() {
-        console.log("clicked");
-        
-        await invoke("test2");
-    }
 </script>
 
 <main>
-    <div id="logo-container" on:click={bruh}>
+    <div id="logo-container">
         <Icon name={"Logo_greyscale"} id="icon"/>
     </div>
     <div id="cog-container">

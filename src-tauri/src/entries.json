@@ -4,9 +4,9 @@
         "entries": [
             {
                 "title": "System clock seconds",
-                "enabled": false,
                 "reg": {
-                    "path": "Computer\\HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
+                    "hkey": "HKEY_CURRENT_USER",
+                    "path": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
                     "key": "ShowSecondsInSystemClock",
                     "standardValue": 0,
                     "enabledValue": 1
@@ -16,7 +16,6 @@
             },
             {
                 "title": "System clock seconds",
-                "enabled": false,
                 "keys": [
                     "testtest",
                     "test2"
@@ -26,7 +25,6 @@
             },
             {
                 "title": "System clock seconds",
-                "enabled": false,
                 "keys": [
                     "testtest",
                     "test2"
@@ -41,7 +39,6 @@
         "entries": [
             {
                 "title": "Other thing",
-                "enabled": false,
                 "keys": [
                     "testtest",
                     "test2"
@@ -51,7 +48,6 @@
             },
             {
                 "title": "Other other thing",
-                "enabled": false,
                 "keys": [
                     "testtest",
                     "test2"

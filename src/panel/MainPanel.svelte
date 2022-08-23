@@ -2,7 +2,7 @@
 	import RegtrickEntry from '../components/RegtrickEntry.svelte';
 	import Navbar from '../components/Navbar.svelte';
 	import { activePanel, ActivePanel, explorerWidth } from '../stores.js';
-	import Entries from "../../public/assets/entries.json";
+	import Entries from "../../src-tauri/src/entries.json";
 	import Explorer from '../components/Explorer.svelte';
 
 	let width = 300;

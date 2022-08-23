@@ -1,7 +1,7 @@
 <script>
     import { explorerWidth } from '../stores.js';
     import Icon from './Icon.svelte';
-    import Entries from "../../public/assets/entries.json";
+    import Entries from "../../src-tauri/src/entries.json";
     import ExplorerCategory from './ExplorerCategory.svelte';
 
     let width = 300;

@@ -9,29 +9,35 @@ use registry::{Hive, Security, Data};
 
 fn main() {
   tauri::Builder::default()
-    .invoke_handler(tauri::generate_handler![test, test2])
+    .invoke_handler(tauri::generate_handler![get_dword, change_dword])
     .run(tauri::generate_context!())
     .expect("error while running tauri application");
 }
 
 #[tauri::command]
-fn test() {
-  let file: File;
-  let mut writer: BufWriter<File>;
+fn get_dword(hkey: &str, path: &str, key: &str) -> u32 {
+  let hive;
 
-  file = OpenOptions::new()
-  .write(true)
-  .append(true)
-  .open("D:\\uwu.txt")
-  .expect("File opening failed");
-  writer = BufWriter::new(file);
+  match hkey {
+    "HKEY_CURRENT_USER" => hive = Hive::CurrentUser,
+    _ => unreachable!()
+  }
 
-  writer.write_all("123".as_bytes()).unwrap();
+  let regkey = hive.open(path, Security::Read).unwrap();
+  let data = regkey.value(key).unwrap();
+  let s: String = data.to_string().drain(2..).collect();
+  return s.parse().unwrap();
 }
 
 #[tauri::command]
-fn test2() {
-  let regkey = Hive::CurrentUser.open(r"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced", Security::Write).unwrap();
+fn change_dword(hkey: &str, path: &str, key: &str, value: u32) {
+  let hive;
 
-  regkey.set_value("ShowSecondsInSystemClock", &Data::U32(0)).unwrap();
+  match hkey {
+    "HKEY_CURRENT_USER" => hive = Hive::CurrentUser,
+    _ => unreachable!()
+  }
+
+  let regkey = hive.open(path, Security::Write).unwrap();
+  regkey.set_value(key, &Data::U32(value)).unwrap();
 }

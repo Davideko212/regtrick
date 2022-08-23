@@ -1,15 +1,33 @@
 <script>
     import Icon from '../components/Icon.svelte';
+    import { invoke } from "@tauri-apps/api";
 
     let enabled = false;
+    let extended = false;
+
     export let title = "";
     export let active = "";
     export let description = "";
-
-    let extended = false;
-
+    export let reg = {};
+    
     function toggle_extend() {
         extended = !extended;
+    }
+
+    async function fetch_enabled() {
+        if (await invoke("get_dword", { hkey: reg.hkey, path: reg.path, key: reg.key }) == reg.enabledValue) {
+            enabled = true;
+        }
+    }
+    fetch_enabled();
+
+    async function change_value() {
+        let value = reg.enabledValue;
+        if (enabled) {
+            value = reg.standardValue;
+        }
+
+        await invoke("change_dword", { hkey: reg.hkey, path: reg.path, key: reg.key, value: value });
     }
 </script>
 
@@ -33,7 +51,7 @@
                     <div id="important">
                         <div id="enable">
                             <h2>Enable:</h2>
-                            <input type="checkbox" id="switch" bind:checked={enabled}>
+                            <input type="checkbox" id="switch" bind:checked={enabled} on:click={change_value}>
                         </div>
                         <div id="active">
                             <h2>Active: {active}</h2>
