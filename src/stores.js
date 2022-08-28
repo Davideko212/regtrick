@@ -8,3 +8,5 @@ export const ActivePanel = {
 }
 
 export const explorerWidth = writable(300);
+
+export const selectedEntries = writable([]);
