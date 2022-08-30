@@ -5,8 +5,10 @@
 
 use std::{io::{BufWriter, Write}, fs::{File, OpenOptions}};
 
+#[cfg(target_os = "windows")]
 use registry::{Hive, Security, Data};
 
+#[cfg(target_os = "windows")]
 fn main() {
   tauri::Builder::default()
     .invoke_handler(tauri::generate_handler![get_dword, change_dword])
@@ -16,12 +18,7 @@ fn main() {
 
 #[tauri::command]
 fn get_dword(hkey: &str, path: &str, key: &str) -> u32 {
-  let hive;
-
-  match hkey {
-    "HKEY_CURRENT_USER" => hive = Hive::CurrentUser,
-    _ => unreachable!()
-  }
+  let hive = get_hive(&hkey);
 
   let regkey = hive.open(path, Security::Read).unwrap();
   let data = regkey.value(key).unwrap();
@@ -31,13 +28,21 @@ fn get_dword(hkey: &str, path: &str, key: &str) -> u32 {
 
 #[tauri::command]
 fn change_dword(hkey: &str, path: &str, key: &str, value: u32) {
-  let hive;
-
-  match hkey {
-    "HKEY_CURRENT_USER" => hive = Hive::CurrentUser,
-    _ => unreachable!()
-  }
+  let hive = get_hive(&hkey);
 
   let regkey = hive.open(path, Security::Write).unwrap();
   regkey.set_value(key, &Data::U32(value)).unwrap();
+}
+
+fn get_hive(hkey: &str) -> Hive {
+  let hive: Hive = match hkey {
+    "HKEY_CLASSES_ROOT" => Hive::ClassesRoot,
+    "HKEY_CURRENT_USER" => Hive::CurrentUser,
+    "HKEY_LOCAL_MACHINE" => Hive::LocalMachine,
+    "HKEY_USERS" => Hive::Users,
+    "HKEY_CURRENT_CONFIG" => Hive::CurrentConfig,
+    _ => unreachable!()
+  };
+
+  return hive;
 }

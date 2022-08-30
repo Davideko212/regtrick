@@ -1,5 +1,6 @@
 <script>
     import { explorerWidth, selectedEntries } from '../stores.js';
+    import { invoke } from "@tauri-apps/api";
 
     export let title = "";
     export let value;
@@ -25,6 +26,13 @@
             selected = false;
         }
     })
+
+    async function fetch_enabled() {
+        if (await invoke("get_dword", { hkey: value.reg.hkey, path: value.reg.path, key: value.reg.key }) == value.reg.enabledValue) {
+            enabled = true;
+        }
+    }
+    fetch_enabled();
 
     function toggle_select() {
         selected = !selected;

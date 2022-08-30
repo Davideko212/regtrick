@@ -3,7 +3,7 @@
         "name": "1",
         "entries": [
             {
-                "title": "System clock seconds",
+                "title": "Taskbar clock display seconds",
                 "reg": {
                     "hkey": "HKEY_CURRENT_USER",
                     "path": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
@@ -12,7 +12,19 @@
                     "enabledValue": 1
                 },
                 "active": "Sign in",
-                "description": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+                "description": "Changes the clock on the taskbar to show the current time with increased precision by including seconds."
+            },
+            {
+                "title": "Remove Cortana from the taskbar",
+                "reg": {
+                    "hkey": "HKEY_LOCAL_MACHINE",
+                    "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search",
+                    "key": "AllowCortana",
+                    "standardValue": 1,
+                    "enabledValue": 0
+                },
+                "active": "Sign in",
+                "description": "This will not only remove the Cortana icon from the taskbar but also hide the option to toggle the Cortana icon from the context menu by right-clicking the taskbar."
             }
         ]
     },
