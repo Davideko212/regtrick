@@ -1,6 +1,6 @@
 [
     {
-        "name": "1",
+        "name": "Taskbar",
         "entries": [
             {
                 "title": "Taskbar clock display seconds",
@@ -25,29 +25,100 @@
                 },
                 "active": "Sign in",
                 "description": "This will not only remove the Cortana icon from the taskbar but also hide the option to toggle the Cortana icon from the context menu by right-clicking the taskbar."
+            },
+            {
+                "title": "Remove the Task View icon from the taskbar",
+                "reg": {
+                    "hkey": "HKEY_CURRENT_USER",
+                    "path": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
+                    "key": "ShowTaskViewButton",
+                    "standardValue": 1,
+                    "enabledValue": 0
+                },
+                "active": "Sign in",
+                "description": "This will ONLY remove the Task View icon from the taskbar but NOT hide the option to toggle the Task View icon from the context menu by right-clicking the taskbar. You could essentially do this without any Registry tricks, just right-clicking the taskbar and unselecting the option in the context menu would suffice, but here we are."
+            },
+            {
+                "title": "Replace previews with list view",
+                "reg": {
+                    "hkey": "HKEY_CURRENT_USER",
+                    "path": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Taskband",
+                    "key": "NumThumbnails",
+                    "standardValue": 0,
+                    "enabledValue": 1
+                },
+                "active": "Sign in",
+                "description": "Changes the preview when hovering over an active icon on the taskbar from showing the window(s) as a preview to a list containing just the title of each window."
+            },
+            {
+                "title": "Disable previews",
+                "reg": {
+                    "hkey": "HKEY_CURRENT_USER",
+                    "path": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
+                    "key": "ExtendedUIHoverTime",
+                    "standardValue": 0,
+                    "enabledValue": 999999999
+                },
+                "active": "Sign in",
+                "description": "Changes the preview when hovering over an active icon on the taskbar from showing the window(s) as a preview to a list containing just the title of each window."
             }
         ]
     },
     {
-        "name": "2",
+        "name": "Search",
+        "entries": [
+            {
+                "title": "Disable Bing search suggestions",
+                "reg": {
+                    "hkey": "HKEY_CURRENT_USER",
+                    "path": "Software\\Policies\\Microsoft\\Windows\\Explorer",
+                    "key": "DisableSearchBoxSuggestions",
+                    "standardValue": 0,
+                    "enabledValue": 1
+                },
+                "active": "Sign in",
+                "description": "This will disable the Bing search suggestions that show at the bottom of your search results."
+            }
+        ]
+    },
+    {
+        "name": "Other",
         "entries": [
             {
                 "title": "Other thing",
-                "keys": [
-                    "testtest",
-                    "test2"
-                ],
-                "active": "Sign in",
-                "description": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+                "reg": {
+                    "hkey": "HKEY_LOCAL_MACHINE",
+                    "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Memory Management",
+                    "key": "ClearPageFileAtShutdown",
+                    "standardValue": 0,
+                    "enabledValue": 1
+                },
+                "active": "Restart",
+                "description": "This will automatically delete the \"pagefile.sys\" system memory paging file during each shutdown. This will free up some disk space at the cost of startup and shutdown speeds."
             },
             {
-                "title": "Other other thing",
-                "keys": [
-                    "testtest",
-                    "test2"
-                ],
-                "active": "Sign in",
-                "description": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+                "title": "dfdfdfdfdf",
+                "reg": {
+                    "hkey": "HKEY_LOCAL_MACHINE",
+                    "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Memory Management",
+                    "key": "dfdfdfd",
+                    "standardValue": 0,
+                    "enabledValue": 1
+                },
+                "active": "Restart",
+                "description": "This will automatically delete the \"pagefile.sys\" system memory paging file during each shutdown. This will free up some disk space at the cost of startup and shutdown speeds."
+            },
+            {
+                "title": "dfdfdfdfdfdfdfdfdfdf",
+                "reg": {
+                    "hkey": "HKEY_LOCAL_MACHINE",
+                    "path": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Memory Management",
+                    "key": "dfdssdssssssfd",
+                    "standardValue": 0,
+                    "enabledValue": 1
+                },
+                "active": "Restart",
+                "description": "This will automatically delete the \"pagefile.sys\" system memory paging file during each shutdown. This will free up some disk space at the cost of startup and shutdown speeds."
             }
         ]
     }

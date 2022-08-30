@@ -80,9 +80,17 @@
         aspect-ratio: 1/1;
         width: 14px;
         margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    #title {
+        display: inline-block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: "...";
     }
 
     h1 {
-        font-size: 16px;
+        font-size: 12px;
     }
 </style>

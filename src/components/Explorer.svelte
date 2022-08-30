@@ -9,7 +9,7 @@
     let extended = true;
 
     function resizeExplorer(event) {
-        if (event.clientX >= 150 && event.clientX <= 450) {
+        if (event.clientX >= 200 && event.clientX <= 450) {
             width = event.clientX;
             explorerWidth.set(width);
         }

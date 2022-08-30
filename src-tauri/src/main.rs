@@ -3,12 +3,8 @@
   windows_subsystem = "windows"
 )]
 
-use std::{io::{BufWriter, Write}, fs::{File, OpenOptions}};
-
-#[cfg(target_os = "windows")]
 use registry::{Hive, Security, Data};
 
-#[cfg(target_os = "windows")]
 fn main() {
   tauri::Builder::default()
     .invoke_handler(tauri::generate_handler![get_dword, change_dword])
@@ -20,8 +16,20 @@ fn main() {
 fn get_dword(hkey: &str, path: &str, key: &str) -> u32 {
   let hive = get_hive(&hkey);
 
-  let regkey = hive.open(path, Security::Read).unwrap();
-  let data = regkey.value(key).unwrap();
+  let regkey_result = hive.open(path, Security::Read);
+  let regkey;
+  match regkey_result {
+    Ok(RegKey) => regkey = RegKey,
+    Err(_) => return u32::MAX,
+  }
+
+  let data_result = regkey.value(key);
+  let data;
+  match data_result {
+    Ok(Data) => data = Data,
+    Err(_) => return u32::MAX,
+  }
+
   let s: String = data.to_string().drain(2..).collect();
   return s.parse().unwrap();
 }
@@ -29,6 +37,9 @@ fn get_dword(hkey: &str, path: &str, key: &str) -> u32 {
 #[tauri::command]
 fn change_dword(hkey: &str, path: &str, key: &str, value: u32) {
   let hive = get_hive(&hkey);
+
+  // Creating missing keys incase there are any
+  hive.create(path, Security::Write).unwrap();
 
   let regkey = hive.open(path, Security::Write).unwrap();
   regkey.set_value(key, &Data::U32(value)).unwrap();
