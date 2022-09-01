@@ -3,11 +3,12 @@
 
 	import WarningPanel from "./panel/WarningPanel.svelte";
 	import MainPanel from "./panel/MainPanel.svelte";
+	import OptionsPanel from "./panel/OptionsPanel.svelte";
+	import InfoPanel from "./panel/InfoPanel.svelte";
 
 	let activePanelValue;
 
-	//temp
-	activePanel.set(ActivePanel.Main);
+	activePanel.set(ActivePanel.Warning);
 
 	activePanel.subscribe(value => {
 		activePanelValue = value;
@@ -19,6 +20,12 @@
 {/if}
 {#if activePanelValue === ActivePanel.Main}
 	<MainPanel />
+{/if}
+{#if activePanelValue === ActivePanel.Options}
+	<OptionsPanel />
+{/if}
+{#if activePanelValue === ActivePanel.Info}
+	<InfoPanel />
 {/if}
 
 <style>

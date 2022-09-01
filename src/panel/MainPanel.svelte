@@ -1,11 +1,11 @@
 <script>
 	import RegtrickEntry from '../components/RegtrickEntry.svelte';
 	import Navbar from '../components/Navbar.svelte';
-	import { activePanel, ActivePanel, explorerWidth, selectedEntries } from '../stores.js';
+	import { explorerWidth, selectedEntries } from '../stores.js';
 	import Entries from "../../src-tauri/src/entries.json";
 	import Explorer from '../components/Explorer.svelte';
 
-	let width = 300;
+	let width;
 	let selected = [];
 	$: if (selected.length == 0) {
 		Entries.forEach(category => {
@@ -25,13 +25,19 @@
 </script>
 
 <main>
+	<!-- SMUI Styles -->
+    <link rel="stylesheet" href="build/smui.css" media="(prefers-color-scheme: light)" />
+    <link rel="stylesheet" href="build/smui-dark.css" media="screen and (prefers-color-scheme: dark)" />
+
 	<Navbar/>
 	<Explorer/>
 
 	<div id="content" style="--explorer-padding: {width+30}px">
-		{#each selected as entry}
-			<RegtrickEntry {...entry}/>
-		{/each}
+		{#key selected}
+			{#each selected as entry}
+				<RegtrickEntry {...entry}/>
+			{/each}
+		{/key}
 	</div>
 </main>
 

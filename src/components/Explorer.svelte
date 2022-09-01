@@ -1,21 +1,35 @@
 <script>
-    import { explorerWidth } from '../stores.js';
+    import { explorerExtended, explorerWidth, explorerOldWidth } from '../stores.js';
     import Icon from './Icon.svelte';
     import Entries from "../../src-tauri/src/entries.json";
     import ExplorerCategory from './ExplorerCategory.svelte';
 
-    let width = 300;
-    let oldWidth = 0;
-    let extended = true;
+    let width;
+    let oldWidth;
+    let extended;
+    $: explorerExtended.set(extended);
+    $: explorerWidth.set(width);
+    $: explorerOldWidth.set(oldWidth);
+
+    explorerWidth.subscribe(value => {
+		width = value;
+	})
+
+    explorerOldWidth.subscribe(value => {
+		oldWidth = value;
+	})
+
+    explorerExtended.subscribe(value => {
+		extended = value;
+	})
 
     function resizeExplorer(event) {
         if (event.clientX >= 200 && event.clientX <= 450) {
             width = event.clientX;
-            explorerWidth.set(width);
         }
     }
 
-    function onMouseDown(event) {
+    function onMouseDown() {
         if (extended) {
             addEventListener("mousemove", resizeExplorer);
             addEventListener("mouseup", onMouseUp);
@@ -35,8 +49,6 @@
             oldWidth = width;
             width = 42;
         }
-
-        explorerWidth.set(width);
     }
 </script>
 

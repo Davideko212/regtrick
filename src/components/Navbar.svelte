@@ -1,15 +1,28 @@
 <script>
+    import { activePanel, ActivePanel } from '../stores.js';
     import Icon from '../components/Icon.svelte';
+
+    let active;
+
+    function switchPanel(panel) {
+        if (active != panel) {
+            activePanel.set(panel);
+        }
+    }
+
+    activePanel.subscribe(value => {
+        active = value;
+    })
 </script>
 
 <main>
-    <div id="logo-container">
+    <div id="logo-container" on:click={() => switchPanel(ActivePanel.Main)}>
         <Icon name={"Logo_greyscale"} id="icon"/>
     </div>
-    <div id="cog-container">
+    <div id="cog-container" on:click={() => switchPanel(ActivePanel.Options)}>
         <Icon name={"Cog"} id="icon"/>
     </div>
-    <div id="info-container">
+    <div id="info-container" on:click={() => switchPanel(ActivePanel.Info)}>
         <Icon name={"Info"} id="icon"/>
     </div>
 </main>

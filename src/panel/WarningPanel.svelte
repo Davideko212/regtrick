@@ -1,5 +1,6 @@
 <script>
     import { activePanel, ActivePanel } from '../stores.js';
+    import Button, { Label } from "@smui/button";
     
 	function acknowledge() {
         activePanel.set(ActivePanel.Main);
@@ -9,6 +10,10 @@
 </script>
 
 <main>
+    <!-- SMUI Styles -->
+    <link rel="stylesheet" href="build/smui.css" media="(prefers-color-scheme: light)" />
+    <link rel="stylesheet" href="build/smui-dark.css" media="screen and (prefers-color-scheme: dark)" />
+
     <div id="content">
         <h1>WARNING</h1>
         
@@ -22,9 +27,9 @@
             <label for="checkbox">By using this software you acknowledge the fact that it may make your Windows unusable.</label>
         </div>
     
-        <button on:click={acknowledge} disabled={!yes}>
-            Go to the Main panel
-        </button>
+        <Button on:click={acknowledge} disabled={!yes} variant="raised">
+            <Label>Go to the Main panel</Label>
+        </Button>
     </div>
 </main>
 
