@@ -10,10 +10,6 @@
 </script>
 
 <main>
-    <!-- SMUI Styles -->
-    <link rel="stylesheet" href="build/smui.css" media="(prefers-color-scheme: light)" />
-    <link rel="stylesheet" href="build/smui-dark.css" media="screen and (prefers-color-scheme: dark)" />
-
     <div id="content">
         <h1>WARNING</h1>
         
@@ -71,12 +67,7 @@
         height: 30px;
         cursor: pointer;
     }
-
-    button {
-        margin: 30px;
-        cursor: pointer;
-    }
-
+    
     h1 {
         font-size: 3em;
         color: red;

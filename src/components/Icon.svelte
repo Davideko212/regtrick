@@ -1,23 +1,13 @@
 <script>
-    import Icons from "../../public/assets/icons/icons.json";
-
     export let name;
-    export let width;
-    export let height;
-
-    let path = Icons[name].path;
-    let alt = Icons[name].alt;
-
-    if (width === undefined) {
-        width = Icons[name].width;
-    }
-    if (height === undefined) {
-        height = Icons[name].height;
-    }
+    export let size = 24;
 </script>
 
-<main style="--height: {height}px; --width: {width}px">
-    <img src="{"assets/icons/" + path}" alt="{alt}" width="{width}" height="{height}">
+<main style="--size: {size}px">
+    <!-- Material Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    
+    <h1><span class="material-icons">{name}</span></h1>
 </main>
 
 <style>
@@ -28,7 +18,19 @@
     }
 
     main {
-        height: var(--height);
-        width: var(--width)
+        background-color: transparent;
+    }
+
+    h1 {
+        height: var(--size);
+        width: var(--size);
+        aspect-ratio: 1/1;
+
+        display: flex;
+        align-items: center;
+    }
+
+    h1 .material-icons {
+        font-size: var(--size);
     }
 </style>

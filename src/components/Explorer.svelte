@@ -53,16 +53,16 @@
 </script>
 
 <main>
-    <div id="content" style="--width: {width}px">
+    <div id="window" style="--width: {width}px">
         <div id="top">
             {#if extended}
             <input type="text" id="searchbar" style="--width: {width-80}px">
             {/if}
             <div id="expand-container" on:click={toggle_extend}>
                 {#if extended}
-                    <Icon name={"Minus"}/>
+                    <Icon name={"remove"} size={42}/>
                 {:else}
-                    <Icon name={"Plus"}/>
+                    <Icon name={"add"} size={42}/>
                 {/if}
             </div>
         </div>
@@ -84,7 +84,7 @@
         border: 0;
     }
 
-    #content {
+    #window {
         display: flex;
         flex-direction: column;
         position: fixed;
@@ -92,8 +92,6 @@
         left: 0%;
         height: 100%;
         width: var(--width);
-
-        background-color: violet;
     }
 
     #drag {
@@ -102,8 +100,6 @@
         width: 24px;
         margin-left: var(--width);
         cursor: e-resize;
-
-        /*background-color: yellow;*/
     }
 
     #top {
@@ -111,8 +107,6 @@
         flex-direction: row;
         align-items: center;
         gap: 22px;
-
-        background-color: aqua;
     }
 
     #searchbar {
@@ -121,10 +115,7 @@
     }
 
     #expand-container {
-        padding: 5px;
         aspect-ratio: 1/1;
         cursor: pointer;
-
-        background-color: blueviolet;
     }
 </style>

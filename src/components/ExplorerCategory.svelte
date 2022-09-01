@@ -45,9 +45,9 @@
     <div id="content" style="--color: {color}">
         <div id="expand-container" on:click={toggle_extend}>
             {#if extended}
-                <Icon name={"Minus"} width={19} height={19}/>
+                <Icon name={"remove"} size={20}/>
             {:else}
-                <Icon name={"Plus"} width={19} height={19}/>
+                <Icon name={"add"} size={20}/>
             {/if}
         </div>
         <div id="select-container" on:click={toggle_select}>
@@ -76,7 +76,7 @@
         display: flex;
         flex-direction: row;
         align-items: center;
-        height: 25px;
+        height: 20px;
 
         background-color: var(--color);
         border: 1px;
@@ -86,9 +86,8 @@
     #expand-container {
         aspect-ratio: 1/1;
         margin: 3px;
+        margin-left: 0;
         cursor: pointer;
-
-        background-color: blue;
     }
 
     #select-container {

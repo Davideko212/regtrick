@@ -38,9 +38,9 @@
                 <div id="arrow">
                     <div id="arrow-container" on:click={toggle_extend}>
                         {#if extended}
-                            <Icon name={"Arrow_down"}/>
+                            <Icon name={"expand_more"} size={32}/>
                         {:else}
-                            <Icon name={"Arrow_up"}/>
+                            <Icon name={"expand_less"} size={32}/>
                         {/if}
                     </div>
                 </div>
@@ -80,7 +80,7 @@
     #entry {
         display: flex;
         flex-direction: column;
-        margin-left: 26px;
+        margin-left: 41px;
         gap: 10px;
         border-top: 2px;
         border-style: solid;

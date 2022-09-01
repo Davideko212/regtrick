@@ -67,11 +67,9 @@
         flex-direction: row;
         align-items: center;
         gap: 3px;
-        height: 25px;
+        height: 20px;
 
         background-color: var(--color);
-        border: 1px;
-        border-style: solid;
 
         cursor: pointer;
     }

@@ -1,7 +1,9 @@
 <script>
-    import { activePanel, ActivePanel } from '../stores.js';
+    import { activePanel, ActivePanel, activeTheme, ActiveTheme } from '../stores.js';
     import Icon from '../components/Icon.svelte';
+    import Fab from '@smui/fab';
 
+    let theme;
     let active;
 
     function switchPanel(panel) {
@@ -13,17 +15,38 @@
     activePanel.subscribe(value => {
         active = value;
     })
+
+    activeTheme.subscribe(value => {
+		theme = value;
+	})
 </script>
 
+<svelte:head>
+	<!-- SMUI Styles -->
+	{#if theme === ActiveTheme.Undefined}
+		<link rel="stylesheet" href="build/smui.css" media="(prefers-color-scheme: light)" />
+		<link rel="stylesheet" href="build/smui-dark.css" media="screen and (prefers-color-scheme: dark)" />
+	{:else if theme === ActiveTheme.Dark}
+		<link rel="stylesheet" href="build/smui.css" />
+		<link rel="stylesheet" href="build/smui-dark.css" media="screen" />
+	{:else if theme === ActiveTheme.FullDark}
+		 <!-- WIP -->
+	{:else}
+		<link rel="stylesheet" href="build/smui.css" />
+	{/if}
+</svelte:head>
+
 <main>
-    <div id="logo-container" on:click={() => switchPanel(ActivePanel.Main)}>
-        <Icon name={"Logo_greyscale"} id="icon"/>
-    </div>
-    <div id="cog-container" on:click={() => switchPanel(ActivePanel.Options)}>
-        <Icon name={"Cog"} id="icon"/>
-    </div>
-    <div id="info-container" on:click={() => switchPanel(ActivePanel.Info)}>
-        <Icon name={"Info"} id="icon"/>
+    <div id="window">
+        <Fab class="clickable" on:click={() => switchPanel(ActivePanel.Main)}>
+            <Icon name={"Logo_greyscale"} id="icon"/>
+        </Fab>
+        <Fab class="clickable" on:click={() => switchPanel(ActivePanel.Options)}>
+            <Icon name={"settings"} id="icon"/>
+        </Fab>
+        <Fab class="clickable" on:click={() => switchPanel(ActivePanel.Info)}>
+            <Icon name={"info"} id="icon"/>
+        </Fab>
     </div>
 </main>
 
@@ -34,7 +57,7 @@
         border: 0;
     }
 
-    main {
+    #window {
         display: flex;
         flex-direction: column;
         gap: 15px;
@@ -47,28 +70,14 @@
         padding-top: 25px;
         padding-right: 25px;
 
-        background-color: greenyellow;
         border-radius: 15px;
     }
 
-    #logo-container{
-       background-color: red;
-       padding: 10px;
-       border-radius: 50%;
-       cursor: pointer;
-    }
+    #window .clickable {
+        padding: 10px;
+        border-radius: 50%;
+        cursor: pointer;
 
-    #cog-container{
-       background-color: red;
-       padding: 10px;
-       border-radius: 50%;
-       cursor: pointer;
+        background-color: pink;
     }
-
-    #info-container{
-       background-color: red;
-       padding: 10px;
-       border-radius: 50%;
-       cursor: pointer;
-    } 
 </style>
