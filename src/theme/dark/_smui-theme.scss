@@ -14,7 +14,7 @@
 html,
 body {
   background-color: color-palette.$grey-900;
-  color: theme.$on-surface;
+  color: color-palette.$grey-50;
 }
 
 a {
@@ -25,13 +25,13 @@ a:visited {
 }
 
 main {
-  background-color: color-palette.$grey-800;
+  background-color: #282828;
 }
 
 #content {
-  background-color: color-palette.$grey-700;
+  background-color: #282828;
 }
 
 #window {
-  background-color: color-palette.$blue-grey-800;
+  background-color: #2a3745;
 }

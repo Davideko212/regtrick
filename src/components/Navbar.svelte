@@ -1,9 +1,8 @@
 <script>
-    import { activePanel, ActivePanel, activeTheme, ActiveTheme } from '../stores.js';
+    import { activePanel, ActivePanel } from '../stores.js';
     import Icon from '../components/Icon.svelte';
     import Fab from '@smui/fab';
 
-    let theme;
     let active;
 
     function switchPanel(panel) {
@@ -15,26 +14,7 @@
     activePanel.subscribe(value => {
         active = value;
     })
-
-    activeTheme.subscribe(value => {
-		theme = value;
-	})
 </script>
-
-<svelte:head>
-	<!-- SMUI Styles -->
-	{#if theme === ActiveTheme.Undefined}
-		<link rel="stylesheet" href="build/smui.css" media="(prefers-color-scheme: light)" />
-		<link rel="stylesheet" href="build/smui-dark.css" media="screen and (prefers-color-scheme: dark)" />
-	{:else if theme === ActiveTheme.Dark}
-		<link rel="stylesheet" href="build/smui.css" />
-		<link rel="stylesheet" href="build/smui-dark.css" media="screen" />
-	{:else if theme === ActiveTheme.FullDark}
-		 <!-- WIP -->
-	{:else}
-		<link rel="stylesheet" href="build/smui.css" />
-	{/if}
-</svelte:head>
 
 <main>
     <div id="window">

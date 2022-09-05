@@ -15,10 +15,29 @@
 	activePanel.subscribe(value => {
 		activePanelValue = value;
 	})
+
+	activeTheme.subscribe(value => {
+		theme = value;
+	})
 </script>
 
+<svelte:head>
+	<!-- SMUI Styles -->
+	{#if theme === 1}
+		<link rel="stylesheet" href="build/smui.css" media="screen" />
+	{:else if theme === 2}
+		<link rel="stylesheet" href="build/smui-dark.css" media="screen" />
+	{:else if theme === 3}
+		 <!-- WIP -->
+	{:else}
+		<link rel="stylesheet" href="build/smui.css" />
+	{/if}
+</svelte:head>
+
 <main>
-	<Navbar />
+	{#if !(activePanelValue === ActivePanel.Warning)}
+		<Navbar />
+	{/if}
 
 	{#if activePanelValue === ActivePanel.Warning}
 		<WarningPanel />
@@ -44,5 +63,10 @@
 	main {
 		max-width: 100%;
   		overflow-x: hidden;
+		height: 100%;
+	}
+
+	::-webkit-scrollbar { 
+    display: none;
 	}
 </style>

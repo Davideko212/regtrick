@@ -1,7 +1,6 @@
 import { writable } from "svelte/store";
 
 export const activePanel = writable(0);
-
 export const ActivePanel = {
     Warning: "Warning",
     Main: "Main",
@@ -9,14 +8,25 @@ export const ActivePanel = {
     Info: "Info"
 }
 
-export const activeTheme = writable(0);
-
-export const ActiveTheme = {
-    Undefined: "Undefined",
-    Light: "Light",
-    Dark: "Dark",
-    FullDark: "Full Dark"
-}
+export const activeTheme = writable(2);
+export const ActiveTheme = [
+    {
+        "name": "Undefined",
+        "sheet": ""
+    },
+    {
+        "name": "Light",
+        "sheet": "smui.css"
+    },
+    {
+        "name": "Dark",
+        "sheet": "smui-dark.css"
+    },
+    {
+        "name": "Full Dark",
+        "sheet": ""
+    }
+]
 
 export const explorerWidth = writable(300);
 export const explorerOldWidth = writable(0);

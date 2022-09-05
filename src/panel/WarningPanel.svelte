@@ -2,11 +2,11 @@
     import { activePanel, ActivePanel } from '../stores.js';
     import Button, { Label } from "@smui/button";
     
+    let yes = false;
+
 	function acknowledge() {
         activePanel.set(ActivePanel.Main);
     }
-
-    let yes = false;
 </script>
 
 <main>
