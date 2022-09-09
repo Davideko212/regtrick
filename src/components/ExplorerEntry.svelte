@@ -9,11 +9,14 @@
     let color;
     let enabled = false;
     let selected = false;
+    let highlighted = false;
     
     $: if (selected) {
-        color = "#ff6161";
+        color = "#555555";
+    } else if (highlighted) {
+        color = "#424242";
     } else {
-        color = "#ff0000";
+        color = "#282828";
     }
 
     explorerWidth.subscribe(value => {
@@ -42,10 +45,15 @@
             selectedEntries.set([]);
         }
     }
+
+    function toggle_highlight() {
+        highlighted = !highlighted;
+    }
 </script>
 
 <main>
-    <div id="content" style="--width: {width}px; --color: {color}" on:click={toggle_select}>
+    <!-- svelte-ignore a11y-mouse-events-have-key-events -->
+    <div id="content" style="--width: {width}px; --color: {color}" on:mouseover={toggle_highlight} on:mouseout={toggle_highlight} on:click={toggle_select}>
         <div id="title">
             <h1>{title}</h1>
         </div>
@@ -68,7 +76,8 @@
         align-items: center;
         gap: 3px;
         height: 20px;
-
+        text-decoration: none;
+        color: inherit;
         background-color: var(--color);
 
         cursor: pointer;

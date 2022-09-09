@@ -10,11 +10,14 @@
     let color;
     let extended = false;
     let selected = false;
+    let highlighted = false;
 
     $: if (selected) {
-        color = "#fdab8e";
+        color = "#555555";
+    } else if (highlighted) {
+        color = "#424242";
     } else {
-        color = "#ff7f50";
+        color = "#282828";
     }
     
     explorerWidth.subscribe(value => {
@@ -39,10 +42,15 @@
             selectedEntries.set([]);
         }
     }
+
+    function toggle_highlight() {
+        highlighted = !highlighted;
+    }
 </script>
 
 <main>
-    <div id="content" style="--color: {color}">
+    <!-- svelte-ignore a11y-mouse-events-have-key-events -->
+    <div id="content" style="--color: {color}" on:mouseover={toggle_highlight} on:mouseout={toggle_highlight}>
         <div id="expand-container" on:click={toggle_extend}>
             {#if extended}
                 <Icon name={"remove"} size={20}/>
