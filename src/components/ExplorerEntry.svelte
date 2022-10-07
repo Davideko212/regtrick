@@ -6,17 +6,17 @@
     export let value;
 
     let width = 300;
-    let color;
+    let filter;
     let enabled = false;
     let selected = false;
     let highlighted = false;
     
     $: if (selected) {
-        color = "#555555";
+        filter = "200%";
     } else if (highlighted) {
-        color = "#424242";
+        filter = "150%";
     } else {
-        color = "#282828";
+        filter = "100%";
     }
 
     explorerWidth.subscribe(value => {
@@ -53,7 +53,7 @@
 
 <main>
     <!-- svelte-ignore a11y-mouse-events-have-key-events -->
-    <div id="content" style="--width: {width}px; --color: {color}" on:mouseover={toggle_highlight} on:mouseout={toggle_highlight} on:click={toggle_select}>
+    <div id="content" style="--width: {width}px; --filter: {filter}" on:mouseover={toggle_highlight} on:mouseout={toggle_highlight} on:click={toggle_select}>
         <div id="title">
             <h1>{title}</h1>
         </div>
@@ -75,10 +75,10 @@
         flex-direction: row;
         align-items: center;
         gap: 3px;
-        height: 20px;
+        height: 24px;
         text-decoration: none;
         color: inherit;
-        background-color: var(--color);
+        filter: brightness(var(--filter));
 
         cursor: pointer;
     }

@@ -5,7 +5,7 @@
 // Svelte Colors!
 @use '@material/theme/index' as theme with (
   $primary: #ff3e00,
-  $secondary: #676778,
+  $secondary: #bcbcd5,
   $surface: #fff,
   $background: #fff,
   $error: color-palette.$red-900
@@ -22,4 +22,16 @@ a {
 }
 a:visited {
   color: color.scale(#40b3ff, $lightness: -35%);
+}
+
+main {
+  background-color: #ffffff;
+}
+
+#content {
+  background-color: #ffffff;
+}
+
+#window {
+  background-color: #95c0f0;
 }

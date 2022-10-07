@@ -1,14 +1,10 @@
 {
     "Logo_color": {
         "path": "logo_color.svg",
-        "alt": "The Regtrick logo",
-        "width": 32,
-        "height": 32
+        "alt": "The Regtrick logo"
     },
     "Logo_greyscale": {
         "path": "logo_greyscale.svg",
-        "alt": "The Regtrick logo in greyscale",
-        "width": 32,
-        "height": 32
+        "alt": "The Regtrick logo in greyscale"
     }
 }

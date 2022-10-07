@@ -17,7 +17,7 @@
     } else if (highlighted) {
         color = "#424242";
     } else {
-        color = "#282828";
+        color = "inherit";
     }
     
     explorerWidth.subscribe(value => {
@@ -67,7 +67,12 @@
     <div id="entries">
         {#if extended}
             {#each values as entry}
-                <ExplorerEntry title={entry.title} value={entry}/>
+                <div id="entry">
+                    <div id="list_icon">
+                        <h2>├</h2>
+                    </div>
+                    <ExplorerEntry title={entry.title} value={entry}/>
+                </div>
             {/each}
         {/if}
     </div>
@@ -91,6 +96,13 @@
         border-style: solid;
     }
 
+    #entry {
+        display: flex;
+        flex-direction: row;
+
+        margin-bottom: -8px;
+    }
+
     #expand-container {
         aspect-ratio: 1/1;
         margin: 3px;
@@ -105,5 +117,9 @@
 
     h1 {
         font-size: 16px;
+    }
+
+    h2 {
+        font-size: 14px;
     }
 </style>

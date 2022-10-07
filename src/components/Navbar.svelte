@@ -19,7 +19,7 @@
 <main>
     <div id="window">
         <Fab class="clickable" on:click={() => switchPanel(ActivePanel.Main)}>
-            <Icon name={"Logo_greyscale"} id="icon"/>
+            <Icon name={"Logo_greyscale"} id="icon" size={32}/>
         </Fab>
         <Fab class="clickable" on:click={() => switchPanel(ActivePanel.Options)}>
             <Icon name={"settings"} id="icon"/>
@@ -57,7 +57,5 @@
         padding: 10px;
         border-radius: 50%;
         cursor: pointer;
-
-        background-color: pink;
     }
 </style>
